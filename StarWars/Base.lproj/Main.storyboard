@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="wqP-Cj-QSK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" rowHeight="50" id="wqP-Cj-QSK" customClass="PesonCell" customModule="StarWars" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wqP-Cj-QSK" id="YfC-Ls-glB">
@@ -60,9 +60,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luke Skywalker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnT-XA-8Lp">
-                                                    <rect key="frame" x="16" y="9.5" width="142" height="31"/>
+                                                    <rect key="frame" x="16" y="9.5" width="343" height="31"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="142" id="BIc-s9-mbe"/>
                                                         <constraint firstAttribute="height" constant="31" id="Bzm-0q-Mz3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
@@ -72,9 +71,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rnT-XA-8Lp" firstAttribute="centerY" secondItem="YfC-Ls-glB" secondAttribute="centerY" id="DjE-Iu-FvB"/>
+                                                <constraint firstAttribute="trailing" secondItem="rnT-XA-8Lp" secondAttribute="trailing" constant="16" id="WVg-eC-Yaw"/>
                                                 <constraint firstItem="rnT-XA-8Lp" firstAttribute="leading" secondItem="YfC-Ls-glB" secondAttribute="leading" constant="16" id="lOf-49-HbG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="rnT-XA-8Lp" id="ckE-NO-PS5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
