@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF2C30172817E1280059F2C3 /* PersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C30162817E1280059F2C3 /* PersonVC.swift */; };
 		FF2FD3EC2816D57B00CD5E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */; };
 		FF2FD3EE2816D57B00CD5E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */; };
 		FF2FD3F32816D57B00CD5E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2FD3F12816D57B00CD5E2D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF2C30162817E1280059F2C3 /* PersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonVC.swift; sourceTree = "<group>"; };
 		FF2FD3E82816D57B00CD5E2D /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				FF99F9622816E1A800520ADF /* MainVC.swift */,
+				FF2C30162817E1280059F2C3 /* PersonVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				FF2FD3EE2816D57B00CD5E2D /* SceneDelegate.swift in Sources */,
 				FF99F9652816E38000520ADF /* PesonCell.swift in Sources */,
 				FF99F96B2816ECF400520ADF /* APIError.swift in Sources */,
+				FF2C30172817E1280059F2C3 /* PersonVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

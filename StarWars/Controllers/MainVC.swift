@@ -11,7 +11,7 @@ class MainVC: UIViewController {
     
     let cellId = "PersonCell"
     
-    var people: [Person] = []
+    var people: [Person?] = []
     var count = 0
     
     @IBOutlet weak var peopleTable: UITableView!
@@ -29,6 +29,7 @@ class MainVC: UIViewController {
 //        }
         NetworkService.server.getCountOfPeople { count in
             self.count = count
+            self.people = Array(repeating: nil, count: count)
             self.peopleTable.reloadData()
         } onError: { message in
             print(message)
@@ -48,15 +49,29 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PesonCell {
             cell.setName("Loading...")
-            NetworkService.server.getPerson(withIdentifire: indexPath.row+1) { person in
-                cell.setName(person.name)
-            } onError: { message in
-                print(message)
-                cell.setName("-")
+            if let thisPerson = people[indexPath.row] {
+                cell.setName(thisPerson.name)
+            } else {
+                NetworkService.server.getPerson(withIdentifire: indexPath.row+1) { person in
+                    cell.setName(person.name)
+                    self.people[indexPath.row] = person
+                } onError: { message in
+                    print(message)
+                    cell.setName("-")
+                }
             }
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let person = people[indexPath.row] {
+            if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
+                personVC.data = person
+                present(personVC, animated: true)
+            }
         }
     }
     
