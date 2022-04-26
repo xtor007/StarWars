@@ -15,6 +15,7 @@ class PersonVC: UIViewController {
     var films: [Film?] = []
     var species: [Speccy?] = []
     var vehicles: [Vehicle?] = []
+    var starships: [Starship?] = []
     
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,6 +39,7 @@ class PersonVC: UIViewController {
         films = Array(repeating: nil, count: data.films.count)
         species = Array(repeating: nil, count: data.species.count)
         vehicles = Array(repeating: nil, count: data.vehicles.count)
+        starships = Array(repeating: nil, count: data.starships.count)
         informationTable.delegate = self
         informationTable.dataSource = self
     }
@@ -139,8 +141,19 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                             cell.setName("-")
                         }
                     }
-                case 3: cell.setName("3")
-                default: cell.setName("def")
+                case 3:
+                    if let starship = starships[indexPath.row] {
+                        cell.setName(starship.name)
+                    } else {
+                        NetworkService.server.getStarship(withLink: data.starships[indexPath.row]) { starship in
+                            cell.setName(starship.name)
+                            self.starships[indexPath.row] = starship
+                        } onError: { message in
+                            print(message)
+                            cell.setName("-")
+                        }
+                    }
+                default: cell.setName("error")
             }
             return cell
         } else {
