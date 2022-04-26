@@ -11,6 +11,8 @@ class PersonVC: UIViewController {
     
     var data: Person!
     
+    var planet: Planet?
+    
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
@@ -44,14 +46,29 @@ class PersonVC: UIViewController {
         eyeLabel.text = data.eye_color
         birthYearLabel.text = data.birth_year
         genderLabel.text = data.gender
-        homeworldButton.setTitle("Loading...", for: .normal)
-        homeworldButton.setAttributedTitle(.init(string: "Loading...", attributes: [.font: UIFont(name: "Papyrus", size: 20)]), for: .normal)
+        setTitleHomeworldButton("Loading...")
+        NetworkService.server.getPlanet(withLink: data.homeworld) { planet in
+            self.planet = planet
+            self.setTitleHomeworldButton(planet.name)
+        } onError: { message in
+            print(message)
+        }
+
+    }
+    
+    private func setTitleHomeworldButton(_ title: String) {
+        homeworldButton.setTitle(title, for: .normal)
+        homeworldButton.setAttributedTitle(.init(string: title, attributes: [.font: UIFont(name: "Papyrus", size: 20)]), for: .normal)
     }
 
     @IBAction func backAction(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     @IBAction func goToHomeworldAction(_ sender: Any) {
+        if let planet = planet {
+            print(planet)
+        }
     }
     
 }

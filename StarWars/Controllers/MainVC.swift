@@ -70,6 +70,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         if let person = people[indexPath.row] {
             if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
                 personVC.data = person
+                personVC.modalPresentationStyle = .fullScreen
                 present(personVC, animated: true)
             }
         }
