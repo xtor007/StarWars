@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct APIError: Decodable {
+    var debug: Debug
+}
+
+struct Debug: Decodable {
+    var status: Int
+    var statusText: String
+}

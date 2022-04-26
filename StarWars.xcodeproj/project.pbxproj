@@ -16,6 +16,8 @@
 		FF99F9652816E38000520ADF /* PesonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99F9642816E37F00520ADF /* PesonCell.swift */; };
 		FF99F9672816E46700520ADF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99F9662816E46700520ADF /* NetworkService.swift */; };
 		FF99F9692816E66000520ADF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99F9682816E66000520ADF /* Person.swift */; };
+		FF99F96B2816ECF400520ADF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99F96A2816ECF400520ADF /* APIError.swift */; };
+		FF99F96D2816EEDC00520ADF /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99F96C2816EEDC00520ADF /* People.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FF99F9642816E37F00520ADF /* PesonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesonCell.swift; sourceTree = "<group>"; };
 		FF99F9662816E46700520ADF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FF99F9682816E66000520ADF /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FF99F96A2816ECF400520ADF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		FF99F96C2816EEDC00520ADF /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				FF99F9682816E66000520ADF /* Person.swift */,
+				FF99F96A2816ECF400520ADF /* APIError.swift */,
+				FF99F96C2816EEDC00520ADF /* People.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,8 +189,10 @@
 				FF99F9672816E46700520ADF /* NetworkService.swift in Sources */,
 				FF2FD3EC2816D57B00CD5E2D /* AppDelegate.swift in Sources */,
 				FF99F9632816E1A900520ADF /* MainVC.swift in Sources */,
+				FF99F96D2816EEDC00520ADF /* People.swift in Sources */,
 				FF2FD3EE2816D57B00CD5E2D /* SceneDelegate.swift in Sources */,
 				FF99F9652816E38000520ADF /* PesonCell.swift in Sources */,
+				FF99F96B2816ECF400520ADF /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +352,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.StarWars";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.StarWars1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -372,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.StarWars";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.StarWars1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

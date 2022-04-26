@@ -11,19 +11,94 @@ class NetworkService {
     
     static let server = NetworkService()
     
-    private func getCountOfPeople(onSuccess: @escaping (Int) -> () ,onError: @escaping (String) -> ()) {
-        onSuccess(10)
-    }
+    let URL_BASIC = "https://swapi.dev/api"
+    let URL_PEOPLE = "/people"
     
-    func getPeople(onSuccess: @escaping ([Person]) -> () ,onError: @escaping (String) -> ()) {
-        var countOfPeople = 0
-        getCountOfPeople { count in
-            countOfPeople = count
-        } onError: { error in
-            onError(error)
+    let session = URLSession(configuration: .default)
+    
+    func getCountOfPeople(onSuccess: @escaping (Int) -> () ,onError: @escaping (String) -> ()) {
+        guard let url = URL(string: "\(URL_BASIC)\(URL_PEOPLE)") else {
+            onError("Failed link")
             return
         }
-        onSuccess(Array.init(repeating: Person(name: "Zhmyshenko Valera", height: 0, mass: 0, hair_color: "", scin_color: "", eye_color: "", birth_year: "", gender: "", homeworld: "", films: [], species: [], vehicles: [], starships: []), count: countOfPeople))
+        let task = session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    onError(error.localizedDescription)
+                    return
+                }
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    onError("Invalid data or response")
+                    return
+                }
+                do {
+                    if response.statusCode == 200 {
+                        let result = try JSONDecoder().decode(People.self, from: data)
+                        onSuccess(result.count)
+                    } else {
+                        let err = try JSONDecoder().decode(APIError.self, from: data)
+                        onError("\(err.debug.status) \(err.debug.statusText)")
+                    }
+                }
+                catch {
+                    onError(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
     }
+    
+    func getPerson(withIdentifire id: Int, onSuccess: @escaping (Person) -> () ,onError: @escaping (String) -> ()) {
+        guard let url = URL(string: "\(URL_BASIC)\(URL_PEOPLE)/\(id)") else {
+            onError("Failed link")
+            return
+        }
+        let task = session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    onError(error.localizedDescription)
+                    return
+                }
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    onError("Invalid data or response")
+                    return
+                }
+                do {
+                    if response.statusCode == 200 {
+                        let result = try JSONDecoder().decode(Person.self, from: data)
+                        onSuccess(result)
+                    } else {
+                        let err = try JSONDecoder().decode(APIError.self, from: data)
+                        onError("\(err.debug.status) \(err.debug.statusText)")
+                    }
+                }
+                catch {
+                    print(error)
+                    print(id)
+                    onError(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+//    func getPeople(onSuccess: @escaping ([Person]) -> () ,onError: @escaping (String) -> ()) {
+//        getCountOfPeople { count in
+//            var result: [Person] = []
+//            for i in 1...count {
+//                self.getPerson(withIdentifire: i) { person in
+//                    result.append(person)
+//                    if result.count == count {
+//                        onSuccess(result)
+//                    }
+//                } onError: { error in
+//                    onError(error)
+//                }
+//            }
+//        } onError: { error in
+//            onError(error)
+//            return
+//        }
+//    }
     
 }
