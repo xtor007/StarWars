@@ -14,6 +14,7 @@ class PersonVC: UIViewController {
     var planet: Planet?
     var films: [Film?] = []
     var species: [Speccy?] = []
+    var vehicles: [Vehicle?] = []
     
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -36,6 +37,7 @@ class PersonVC: UIViewController {
         getData()
         films = Array(repeating: nil, count: data.films.count)
         species = Array(repeating: nil, count: data.species.count)
+        vehicles = Array(repeating: nil, count: data.vehicles.count)
         informationTable.delegate = self
         informationTable.dataSource = self
     }
@@ -125,7 +127,18 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                             cell.setName("-")
                         }
                     }
-                case 2: cell.setName("2")
+                case 2:
+                    if let vehicle = vehicles[indexPath.row] {
+                        cell.setName(vehicle.name)
+                    } else {
+                        NetworkService.server.getVehicle(withLink: data.vehicles[indexPath.row]) { vehicle in
+                            cell.setName(vehicle.name)
+                            self.vehicles[indexPath.row] = vehicle
+                        } onError: { message in
+                            print(message)
+                            cell.setName("-")
+                        }
+                    }
                 case 3: cell.setName("3")
                 default: cell.setName("def")
             }

@@ -16,7 +16,7 @@ struct Speccy: Decodable {
     var hair_colors: String
     var eye_colors: String
     var average_lifespan: String
-    var homeworld: String
+    var homeworld: String?
     var language: String
     var people: [String]
     var films: [String]
