@@ -12,6 +12,7 @@ class PersonVC: UIViewController {
     var data: Person!
     
     var planet: Planet?
+    var films: [Film?] = []
     
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,6 +33,7 @@ class PersonVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
+        films = Array(repeating: nil, count: data.films.count)
         informationTable.delegate = self
         informationTable.dataSource = self
     }
@@ -84,11 +86,40 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        switch section {
+            case 0: return data.films.count
+            case 1: return data.species.count
+            case 2: return data.vehicles.count
+            case 3: return data.starships.count
+            default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PersonCell {
+            cell.setName("Loading...")
+            switch indexPath.section {
+                case 0:
+                    if let film = films[indexPath.row] {
+                        cell.setName("Episode \(film.episode_id). \(film.title)")
+                    } else {
+                        NetworkService.server.getFilm(withLink: data.films[indexPath.row]) { film in
+                            cell.setName("Episode \(film.episode_id). \(film.title)")
+                            self.films[indexPath.row] = film
+                        } onError: { message in
+                            print(message)
+                            cell.setName("-")
+                        }
+                    }
+                case 1: cell.setName("1")
+                case 2: cell.setName("2")
+                case 3: cell.setName("3")
+                default: cell.setName("def")
+            }
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
 }
