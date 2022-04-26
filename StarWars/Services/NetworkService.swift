@@ -148,6 +148,39 @@ class NetworkService {
         task.resume()
     }
     
+    func getSpeccy(withLink link: String, onSuccess: @escaping (Speccy) -> () ,onError: @escaping (String) -> ()) {
+        guard let url = URL(string: link) else {
+            onError("Failed link")
+            return
+        }
+        let task = session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    onError(error.localizedDescription)
+                    return
+                }
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    onError("Invalid data or response")
+                    return
+                }
+                do {
+                    if response.statusCode == 200 {
+                        let result = try JSONDecoder().decode(Speccy.self, from: data)
+                        onSuccess(result)
+                    } else {
+                        let err = try JSONDecoder().decode(APIError.self, from: data)
+                        onError("\(err.debug.status) \(err.debug.statusText)")
+                    }
+                }
+                catch {
+                    print(error)
+                    onError(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
 //    func getPeople(onSuccess: @escaping ([Person]) -> () ,onError: @escaping (String) -> ()) {
 //        getCountOfPeople { count in
 //            var result: [Person] = []
