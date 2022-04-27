@@ -165,4 +165,31 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            if let film = films[indexPath.row] {
+                if let filmVC = storyboard?.instantiateViewController(withIdentifier: "filmVC") as? FilmVC {
+                    filmVC.data = film
+                    filmVC.modalPresentationStyle = .fullScreen
+                    presentDetail(filmVC)
+                }
+            }
+        case 1:
+            if let speccy = species[indexPath.row] {
+                print(speccy)
+            }
+        case 2:
+            if let vehicle = vehicles[indexPath.row] {
+                print(vehicle)
+            }
+        case 3:
+            if let starship = starships[indexPath.row] {
+                print(starship)
+            }
+        default:
+            print("error")
+        }
+    }
+    
 }

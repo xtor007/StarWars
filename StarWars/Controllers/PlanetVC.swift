@@ -113,19 +113,23 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
-            if let person = residents[indexPath.row] {
-                if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
-                    personVC.data = person
-                    personVC.modalPresentationStyle = .fullScreen
-                    presentDetail(personVC)
+            case 0:
+                if let person = residents[indexPath.row] {
+                    if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
+                        personVC.data = person
+                        personVC.modalPresentationStyle = .fullScreen
+                        presentDetail(personVC)
+                    }
                 }
-            }
-        case 1:
-            if let film = films[indexPath.row] {
-                print(film)
-            }
-        default: print("error")
+            case 1:
+                if let film = films[indexPath.row] {
+                    if let filmVC = storyboard?.instantiateViewController(withIdentifier: "filmVC") as? FilmVC {
+                        filmVC.data = film
+                        filmVC.modalPresentationStyle = .fullScreen
+                        presentDetail(filmVC)
+                    }
+                }
+            default: print("error")
         }
     }
     
