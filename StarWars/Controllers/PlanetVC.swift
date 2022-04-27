@@ -52,7 +52,7 @@ class PlanetVC: UIViewController {
     }
     
     @IBAction func backAction(_ sender: Any) {
-        dismiss(animated: true)
+        dismissDetail()
     }
     
 }
@@ -118,7 +118,7 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
                 if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
                     personVC.data = person
                     personVC.modalPresentationStyle = .fullScreen
-                    present(personVC, animated: true)
+                    presentDetail(personVC)
                 }
             }
         case 1:

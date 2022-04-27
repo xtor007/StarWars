@@ -14,6 +14,7 @@
 		FF2C301F28181E330059F2C3 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C301E28181E330059F2C3 /* Vehicle.swift */; };
 		FF2C3021281824250059F2C3 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3020281824250059F2C3 /* Starship.swift */; };
 		FF2C30232819348E0059F2C3 /* PlanetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C30222819348D0059F2C3 /* PlanetVC.swift */; };
+		FF2C3026281942990059F2C3 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3025281942990059F2C3 /* PresentDetail.swift */; };
 		FF2FD3EC2816D57B00CD5E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */; };
 		FF2FD3EE2816D57B00CD5E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */; };
 		FF2FD3F32816D57B00CD5E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2FD3F12816D57B00CD5E2D /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		FF2C301E28181E330059F2C3 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		FF2C3020281824250059F2C3 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		FF2C30222819348D0059F2C3 /* PlanetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetVC.swift; sourceTree = "<group>"; };
+		FF2C3025281942990059F2C3 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
 		FF2FD3E82816D57B00CD5E2D /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF2C3024281942750059F2C3 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C3025281942990059F2C3 /* PresentDetail.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
 		FF2FD3DF2816D57A00CD5E2D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		FF2FD3EA2816D57B00CD5E2D /* StarWars */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C3024281942750059F2C3 /* Extention */,
 				FF2FD4022816D5CE00CD5E2D /* Model */,
 				FF2FD4012816D5C300CD5E2D /* Controllers */,
 				FF2FD4002816D5B500CD5E2D /* View */,
@@ -208,6 +219,7 @@
 			files = (
 				FF2C301F28181E330059F2C3 /* Vehicle.swift in Sources */,
 				FF2C3021281824250059F2C3 /* Starship.swift in Sources */,
+				FF2C3026281942990059F2C3 /* PresentDetail.swift in Sources */,
 				FF99F9692816E66000520ADF /* Person.swift in Sources */,
 				FF99F9672816E46700520ADF /* NetworkService.swift in Sources */,
 				FF2C301D281810C90059F2C3 /* Speccy.swift in Sources */,

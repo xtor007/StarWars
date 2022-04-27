@@ -70,7 +70,7 @@ class PersonVC: UIViewController {
     }
 
     @IBAction func backAction(_ sender: Any) {
-        dismiss(animated: true)
+        dismissDetail()
     }
     
     @IBAction func goToHomeworldAction(_ sender: Any) {
@@ -78,7 +78,7 @@ class PersonVC: UIViewController {
             if let planetVC = storyboard?.instantiateViewController(withIdentifier: "planetVC") as? PlanetVC {
                 planetVC.data = planet
                 planetVC.modalPresentationStyle = .fullScreen
-                present(planetVC, animated: true)
+                presentDetail(planetVC)
             }
         }
     }
