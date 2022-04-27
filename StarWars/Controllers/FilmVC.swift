@@ -55,7 +55,10 @@ class FilmVC: UIViewController {
     }
     
     @IBAction func seeCrawlAction(_ sender: Any) {
-        print("See")
+        if let crawlVC = storyboard?.instantiateViewController(withIdentifier: "crawlVC") as? CrawlVC {
+            crawlVC.text = data.opening_crawl
+            present(crawlVC, animated: true)
+        }
     }
     
 }

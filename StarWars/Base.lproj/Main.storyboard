@@ -886,15 +886,15 @@
             </objects>
             <point key="canvasLocation" x="3077.5999999999999" y="82.3088455772114"/>
         </scene>
-        <!--View Controller-->
+        <!--CrawlVC-->
         <scene sceneID="FDs-BY-a6Z">
             <objects>
-                <viewController storyboardIdentifier="crawlVC" id="gtf-oW-he6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="crawlVC" id="gtf-oW-he6" customClass="CrawlVC" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A31-4U-9jK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-fN-ZZt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-fN-ZZt">
                                 <rect key="frame" x="16" y="20" width="343" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <mutableString key="text">It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....</mutableString>
@@ -912,6 +912,9 @@
                             <constraint firstItem="cSV-N9-ArB" firstAttribute="bottom" secondItem="DcZ-fN-ZZt" secondAttribute="bottom" constant="20" id="f9g-5n-qob"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="DcZ-fN-ZZt" id="TTX-Xx-1au"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPj-Q6-TPS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
