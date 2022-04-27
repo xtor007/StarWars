@@ -12,6 +12,7 @@ class PlanetVC: UIViewController {
     var data: Planet!
     
     var films: [Film?] = []
+    var residents: [Person?] = []
     
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,6 +33,7 @@ class PlanetVC: UIViewController {
         super.viewDidLoad()
         getData()
         films = Array(repeating: nil, count: data.films.count)
+        residents = Array(repeating: nil, count: data.residents.count)
         informationTable.delegate = self
         informationTable.dataSource = self
     }
@@ -78,7 +80,17 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
             cell.setName("Loading...")
             switch indexPath.section {
                 case 0:
-                    cell.setName("0")
+                    if let person = residents[indexPath.row] {
+                        cell.setName(person.name)
+                    } else {
+                        NetworkService.server.getPerson(withLink: data.residents[indexPath.row]) { person in
+                            cell.setName(person.name)
+                            self.residents[indexPath.row] = person
+                        } onError: { message in
+                            print(message)
+                            cell.setName("-")
+                        }
+                    }
                 case 1:
                     if let film = films[indexPath.row] {
                         cell.setName("Episode \(film.episode_id). \(film.title)")
@@ -96,6 +108,24 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            if let person = residents[indexPath.row] {
+                if let personVC = storyboard?.instantiateViewController(withIdentifier: "personVC") as? PersonVC {
+                    personVC.data = person
+                    personVC.modalPresentationStyle = .fullScreen
+                    present(personVC, animated: true)
+                }
+            }
+        case 1:
+            if let film = films[indexPath.row] {
+                print(film)
+            }
+        default: print("error")
         }
     }
     
