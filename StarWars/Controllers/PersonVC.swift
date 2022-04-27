@@ -75,7 +75,11 @@ class PersonVC: UIViewController {
     
     @IBAction func goToHomeworldAction(_ sender: Any) {
         if let planet = planet {
-            print(planet)
+            if let planetVC = storyboard?.instantiateViewController(withIdentifier: "planetVC") as? PlanetVC {
+                planetVC.data = planet
+                planetVC.modalPresentationStyle = .fullScreen
+                present(planetVC, animated: true)
+            }
         }
     }
     

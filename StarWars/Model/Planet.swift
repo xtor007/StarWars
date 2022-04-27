@@ -16,6 +16,7 @@ struct Planet: Decodable {
     var gravity: String
     var terrain: String
     var surface_water: String
+    var population: String
     var residents: [String]
     var films: [String]
 }
