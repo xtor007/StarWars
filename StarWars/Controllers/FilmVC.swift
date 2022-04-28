@@ -185,7 +185,11 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
             }
         case 3:
             if let vehicle = vehicles[indexPath.row] {
-                print(vehicle)
+                if let vehicleVC = storyboard?.instantiateViewController(withIdentifier: "vehicleVC") as? VehicleVC {
+                    vehicleVC.data = vehicle
+                    vehicleVC.modalPresentationStyle = .fullScreen
+                    presentDetail(vehicleVC)
+                }
             }
         case 4:
             if let speccy = species[indexPath.row] {

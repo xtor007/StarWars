@@ -184,7 +184,11 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
             }
         case 2:
             if let vehicle = vehicles[indexPath.row] {
-                print(vehicle)
+                if let vehicleVC = storyboard?.instantiateViewController(withIdentifier: "vehicleVC") as? VehicleVC {
+                    vehicleVC.data = vehicle
+                    vehicleVC.modalPresentationStyle = .fullScreen
+                    presentDetail(vehicleVC)
+                }
             }
         case 3:
             if let starship = starships[indexPath.row] {
