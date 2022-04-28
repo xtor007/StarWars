@@ -886,6 +886,334 @@
             </objects>
             <point key="canvasLocation" x="3077.5999999999999" y="82.3088455772114"/>
         </scene>
+        <!--SpeccyVC-->
+        <scene sceneID="Ov1-3j-fM4">
+            <objects>
+                <viewController storyboardIdentifier="speccyVC" id="y74-4E-HeW" customClass="SpeccyVC" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H5k-aJ-W6h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXj-PO-adc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntw-Oz-CaA">
+                                        <rect key="frame" x="55" y="33" width="265" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="hTf-n0-nig"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugm-P4-zNk">
+                                        <rect key="frame" x="8" y="25" width="60" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="5ss-eQ-YXp"/>
+                                            <constraint firstAttribute="height" constant="50" id="pLx-9j-Atz"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backAction:" destination="y74-4E-HeW" eventType="touchUpInside" id="y2f-hs-qRf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2Fg-yJ-qln"/>
+                                    <constraint firstAttribute="trailing" secondItem="ntw-Oz-CaA" secondAttribute="trailing" constant="55" id="455-Aq-umZ"/>
+                                    <constraint firstItem="ntw-Oz-CaA" firstAttribute="leading" secondItem="AXj-PO-adc" secondAttribute="leading" constant="55" id="7h6-lp-kiS"/>
+                                    <constraint firstItem="ntw-Oz-CaA" firstAttribute="centerY" secondItem="AXj-PO-adc" secondAttribute="centerY" id="NAz-OQ-VaR"/>
+                                    <constraint firstItem="ugm-P4-zNk" firstAttribute="leading" secondItem="AXj-PO-adc" secondAttribute="leading" constant="8" id="ca1-VI-TKX"/>
+                                    <constraint firstItem="ugm-P4-zNk" firstAttribute="centerY" secondItem="AXj-PO-adc" secondAttribute="centerY" id="vg6-2v-Bqr"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IX5-Eq-OtJ">
+                                <rect key="frame" x="16" y="108" width="343" height="324"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-yr-SAP">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3s-dx-LdL">
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-39-9ZL">
+                                                <rect key="frame" x="280.5" y="0.0" width="62.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GHN-YE-uyC">
+                                        <rect key="frame" x="0.0" y="31" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classification:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZY-FW-778">
+                                                <rect key="frame" x="0.0" y="0.0" width="123.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mammal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTU-Cb-uoC">
+                                                <rect key="frame" x="274.5" y="0.0" width="68.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="n3n-SF-ixJ">
+                                        <rect key="frame" x="0.0" y="62" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designation:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfp-do-zyG">
+                                                <rect key="frame" x="0.0" y="0.0" width="113" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sentient" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-1B-ypk">
+                                                <rect key="frame" x="271.5" y="0.0" width="71.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wFa-aR-QdU">
+                                        <rect key="frame" x="0.0" y="93" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average height:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kx-XF-gFF">
+                                                <rect key="frame" x="0.0" y="0.0" width="138.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyn-97-VOT">
+                                                <rect key="frame" x="314.5" y="0.0" width="28.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vba-Wn-cF8">
+                                        <rect key="frame" x="0.0" y="124" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skin colors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI7-qe-ctQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caucasian, black, asian, hispanic" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSt-YL-98o">
+                                                <rect key="frame" x="138" y="0.0" width="205" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="205" id="VaW-CQ-VcV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lSt-YL-98o" secondAttribute="trailing" id="dY8-lw-iW7"/>
+                                            <constraint firstAttribute="bottom" secondItem="lSt-YL-98o" secondAttribute="bottom" id="qxn-Bw-mCF"/>
+                                            <constraint firstItem="lSt-YL-98o" firstAttribute="top" secondItem="vba-Wn-cF8" secondAttribute="top" id="wSZ-ns-pj8"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Iou-P8-vZb">
+                                        <rect key="frame" x="0.0" y="155" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair colors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2y-RL-WKt">
+                                                <rect key="frame" x="0.0" y="0.0" width="103" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blonde, brown, black, red" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj2-Cj-Rbf">
+                                                <rect key="frame" x="138" y="0.0" width="205" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="205" id="rhP-KV-xqZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="bj2-Cj-Rbf" secondAttribute="trailing" id="8eH-jI-P4r"/>
+                                            <constraint firstAttribute="bottom" secondItem="bj2-Cj-Rbf" secondAttribute="bottom" id="Box-0f-VXz"/>
+                                            <constraint firstItem="bj2-Cj-Rbf" firstAttribute="top" secondItem="Iou-P8-vZb" secondAttribute="top" id="IDM-pt-7ad"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cGL-FD-6TT">
+                                        <rect key="frame" x="0.0" y="186" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eye colors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOM-WN-aCZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" brown, blue, green, hazel, grey, amber" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpy-YE-K5N">
+                                                <rect key="frame" x="138" y="0.0" width="205" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="205" id="wy2-yi-bzY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Cpy-YE-K5N" secondAttribute="bottom" id="GDj-CA-yqG"/>
+                                            <constraint firstAttribute="trailing" secondItem="Cpy-YE-K5N" secondAttribute="trailing" id="cZ6-AP-hzX"/>
+                                            <constraint firstItem="Cpy-YE-K5N" firstAttribute="top" secondItem="cGL-FD-6TT" secondAttribute="top" id="eLu-Rr-Tjl"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0st-Aq-ktW">
+                                        <rect key="frame" x="0.0" y="217" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avarege lifespan:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-eh-31m">
+                                                <rect key="frame" x="0.0" y="0.0" width="152.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDG-W7-3Cr">
+                                                <rect key="frame" x="314.5" y="0.0" width="28.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xab-Ln-Q8w">
+                                        <rect key="frame" x="0.0" y="248" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dd-qj-fuZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Galactic Basic" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sJ-6V-oTi">
+                                                <rect key="frame" x="217.5" y="0.0" width="125.5" height="31"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7xK-dt-DyS">
+                                        <rect key="frame" x="0.0" y="279" width="343" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Homeworld:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB4-0p-XAS">
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="45"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-z3-GV5">
+                                                <rect key="frame" x="224.5" y="0.0" width="118.5" height="45"/>
+                                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Stewjon">
+                                                            <attributes>
+                                                                <font key="NSFont" size="20" name="Papyrus"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="Coruscant">
+                                                    <fontDescription key="titleFontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="goToHomeworldAction:" destination="y74-4E-HeW" eventType="touchUpInside" id="6SO-ve-3qR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ogj-zx-66o">
+                                <rect key="frame" x="0.0" y="432" width="375" height="235"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" rowHeight="50" id="QFd-VN-GBO" customClass="PersonCell" customModule="StarWars" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QFd-VN-GBO" id="ygF-5I-LMq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luke Skywalker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23X-QH-Gox">
+                                                    <rect key="frame" x="16" y="9.5" width="343" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="1tV-dd-sAD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="23X-QH-Gox" firstAttribute="centerY" secondItem="ygF-5I-LMq" secondAttribute="centerY" id="01q-aK-gkA"/>
+                                                <constraint firstItem="23X-QH-Gox" firstAttribute="leading" secondItem="ygF-5I-LMq" secondAttribute="leading" constant="16" id="Pas-WQ-3VY"/>
+                                                <constraint firstAttribute="trailing" secondItem="23X-QH-Gox" secondAttribute="trailing" constant="16" id="Zec-Da-sb8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="23X-QH-Gox" id="Peq-Lf-hdx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tvd-sv-B0Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AXj-PO-adc" firstAttribute="trailing" secondItem="Tvd-sv-B0Y" secondAttribute="trailing" id="5cJ-lY-mFC"/>
+                            <constraint firstItem="IX5-Eq-OtJ" firstAttribute="leading" secondItem="Tvd-sv-B0Y" secondAttribute="leading" constant="16" id="Fyd-7g-SgM"/>
+                            <constraint firstItem="AXj-PO-adc" firstAttribute="top" secondItem="Tvd-sv-B0Y" secondAttribute="top" id="L3J-CZ-Cds"/>
+                            <constraint firstItem="ogj-zx-66o" firstAttribute="trailing" secondItem="Tvd-sv-B0Y" secondAttribute="trailing" id="PHA-MG-SCh"/>
+                            <constraint firstItem="ogj-zx-66o" firstAttribute="leading" secondItem="Tvd-sv-B0Y" secondAttribute="leading" id="TtO-V8-dVK"/>
+                            <constraint firstItem="ogj-zx-66o" firstAttribute="top" secondItem="IX5-Eq-OtJ" secondAttribute="bottom" id="eLF-S8-6Uf"/>
+                            <constraint firstItem="AXj-PO-adc" firstAttribute="leading" secondItem="Tvd-sv-B0Y" secondAttribute="leading" id="gNH-m4-kg9"/>
+                            <constraint firstItem="ogj-zx-66o" firstAttribute="bottom" secondItem="Tvd-sv-B0Y" secondAttribute="bottom" id="hH0-xy-TV7"/>
+                            <constraint firstItem="Tvd-sv-B0Y" firstAttribute="trailing" secondItem="IX5-Eq-OtJ" secondAttribute="trailing" constant="16" id="nap-yd-NzK"/>
+                            <constraint firstItem="IX5-Eq-OtJ" firstAttribute="top" secondItem="AXj-PO-adc" secondAttribute="bottom" constant="8" id="zMD-r6-lot"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="classificationLabel" destination="fTU-Cb-uoC" id="xTC-Vu-BrM"/>
+                        <outlet property="designationLabel" destination="lSt-YL-98o" id="dOD-Ve-uI3"/>
+                        <outlet property="eyeLabel" destination="Cpy-YE-K5N" id="I4d-LA-Cdh"/>
+                        <outlet property="hairLabel" destination="bj2-Cj-Rbf" id="fRM-nH-hZj"/>
+                        <outlet property="heightLabel" destination="dyn-97-VOT" id="HEo-S3-WCX"/>
+                        <outlet property="homeworldButton" destination="H6s-z3-GV5" id="3WQ-lh-PAS"/>
+                        <outlet property="informationTable" destination="ogj-zx-66o" id="di8-zy-sts"/>
+                        <outlet property="languageLabel" destination="8sJ-6V-oTi" id="yk7-qD-cYv"/>
+                        <outlet property="lifespanLabel" destination="8sJ-6V-oTi" id="gTK-lS-l5c"/>
+                        <outlet property="mainNameLabel" destination="ntw-Oz-CaA" id="m7R-We-7Uy"/>
+                        <outlet property="nameLabel" destination="qSm-39-9ZL" id="qjR-Xf-mZe"/>
+                        <outlet property="skinLabel" destination="lSt-YL-98o" id="xal-K9-gBG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7GD-nL-pb2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3773.5999999999999" y="82.3088455772114"/>
+        </scene>
         <!--CrawlVC-->
         <scene sceneID="FDs-BY-a6Z">
             <objects>
@@ -897,7 +1225,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-fN-ZZt">
                                 <rect key="frame" x="16" y="20" width="343" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....</mutableString>
+                                <string key="text">It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

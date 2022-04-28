@@ -185,7 +185,11 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
             }
         case 4:
             if let speccy = species[indexPath.row] {
-                print(speccy)
+                if let speccyVC = storyboard?.instantiateViewController(withIdentifier: "speccyVC") as? SpeccyVC {
+                    speccyVC.data = speccy
+                    speccyVC.modalPresentationStyle = .fullScreen
+                    presentDetail(speccyVC)
+                }
             }
         default: print("error")
         }

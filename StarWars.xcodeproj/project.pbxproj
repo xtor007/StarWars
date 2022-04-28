@@ -17,6 +17,7 @@
 		FF2C3026281942990059F2C3 /* PresentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3025281942990059F2C3 /* PresentDetail.swift */; };
 		FF2C3028281988300059F2C3 /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C30272819882F0059F2C3 /* FilmVC.swift */; };
 		FF2C302A281994C40059F2C3 /* CrawlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C3029281994C40059F2C3 /* CrawlVC.swift */; };
+		FF2C302C281999CA0059F2C3 /* SpeccyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C302B281999CA0059F2C3 /* SpeccyVC.swift */; };
 		FF2FD3EC2816D57B00CD5E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */; };
 		FF2FD3EE2816D57B00CD5E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */; };
 		FF2FD3F32816D57B00CD5E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2FD3F12816D57B00CD5E2D /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		FF2C3025281942990059F2C3 /* PresentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetail.swift; sourceTree = "<group>"; };
 		FF2C30272819882F0059F2C3 /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
 		FF2C3029281994C40059F2C3 /* CrawlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlVC.swift; sourceTree = "<group>"; };
+		FF2C302B281999CA0059F2C3 /* SpeccyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeccyVC.swift; sourceTree = "<group>"; };
 		FF2FD3E82816D57B00CD5E2D /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2FD3EB2816D57B00CD5E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF2FD3ED2816D57B00CD5E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				FF2C30222819348D0059F2C3 /* PlanetVC.swift */,
 				FF2C30272819882F0059F2C3 /* FilmVC.swift */,
 				FF2C3029281994C40059F2C3 /* CrawlVC.swift */,
+				FF2C302B281999CA0059F2C3 /* SpeccyVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				FF99F9652816E38000520ADF /* PersonCell.swift in Sources */,
 				FF99F96B2816ECF400520ADF /* APIError.swift in Sources */,
 				FF2C30172817E1280059F2C3 /* PersonVC.swift in Sources */,
+				FF2C302C281999CA0059F2C3 /* SpeccyVC.swift in Sources */,
 				FF2C30192817FCB20059F2C3 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

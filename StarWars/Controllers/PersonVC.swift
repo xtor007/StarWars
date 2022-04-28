@@ -61,7 +61,6 @@ class PersonVC: UIViewController {
         } onError: { message in
             print(message)
         }
-
     }
     
     private func setTitleHomeworldButton(_ title: String) {
@@ -177,7 +176,11 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
             }
         case 1:
             if let speccy = species[indexPath.row] {
-                print(speccy)
+                if let speccyVC = storyboard?.instantiateViewController(withIdentifier: "speccyVC") as? SpeccyVC {
+                    speccyVC.data = speccy
+                    speccyVC.modalPresentationStyle = .fullScreen
+                    presentDetail(speccyVC)
+                }
             }
         case 2:
             if let vehicle = vehicles[indexPath.row] {
