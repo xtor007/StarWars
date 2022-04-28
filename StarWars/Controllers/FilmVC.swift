@@ -177,7 +177,11 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
             }
         case 2:
             if let starship = starships[indexPath.row] {
-                print(starship)
+                if let starshipVC = storyboard?.instantiateViewController(withIdentifier: "starshipVC") as? StarshipVC {
+                    starshipVC.data = starship
+                    starshipVC.modalPresentationStyle = .fullScreen
+                    presentDetail(starshipVC)
+                }
             }
         case 3:
             if let vehicle = vehicles[indexPath.row] {

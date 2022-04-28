@@ -188,7 +188,11 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
             }
         case 3:
             if let starship = starships[indexPath.row] {
-                print(starship)
+                if let starshipVC = storyboard?.instantiateViewController(withIdentifier: "starshipVC") as? StarshipVC {
+                    starshipVC.data = starship
+                    starshipVC.modalPresentationStyle = .fullScreen
+                    presentDetail(starshipVC)
+                }
             }
         default:
             print("error")
