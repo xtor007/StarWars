@@ -38,8 +38,22 @@ class StarshipVC: UIViewController {
         getData()
         pilots = Array(repeating: nil, count: data.pilots.count)
         films = Array(repeating: nil, count: data.films.count)
+        checkCach()
         informationTable.dataSource = self
         informationTable.delegate = self
+    }
+    
+    private func checkCach() {
+        for i in 0..<films.count {
+            if let film = DataService.device.data[data.films[i]] as? Film {
+                films[i] = film
+            }
+        }
+        for i in 0..<pilots.count {
+            if let person = DataService.device.data[data.pilots[i]] as? Person {
+                pilots[i] = person
+            }
+        }
     }
     
     private func getData() {
@@ -94,6 +108,7 @@ extension StarshipVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getPerson(withLink: data.pilots[indexPath.row]) { person in
                             cell.setName(person.name)
                             self.pilots[indexPath.row] = person
+                            DataService.device.data[self.data.pilots[indexPath.row]] = person
                         } onError: { message in
                             print(message)
                             cell.setName("-")
@@ -106,6 +121,7 @@ extension StarshipVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getFilm(withLink: data.films[indexPath.row]) { film in
                             cell.setName("Episode \(film.episode_id). \(film.title)")
                             self.films[indexPath.row] = film
+                            DataService.device.data[self.data.films[indexPath.row]] = film
                         } onError: { message in
                             print(message)
                             cell.setName("-")

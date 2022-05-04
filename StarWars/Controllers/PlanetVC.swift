@@ -34,8 +34,22 @@ class PlanetVC: UIViewController {
         getData()
         films = Array(repeating: nil, count: data.films.count)
         residents = Array(repeating: nil, count: data.residents.count)
+        checkCach()
         informationTable.delegate = self
         informationTable.dataSource = self
+    }
+    
+    private func checkCach() {
+        for i in 0..<films.count {
+            if let film = DataService.device.data[data.films[i]] as? Film {
+                films[i] = film
+            }
+        }
+        for i in 0..<residents.count {
+            if let person = DataService.device.data[data.residents[i]] as? Person {
+                residents[i] = person
+            }
+        }
     }
     
     private func getData() {
@@ -86,6 +100,7 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getPerson(withLink: data.residents[indexPath.row]) { person in
                             cell.setName(person.name)
                             self.residents[indexPath.row] = person
+                            DataService.device.data[self.data.residents[indexPath.row]] = person
                         } onError: { message in
                             print(message)
                             cell.setName("-")
@@ -98,6 +113,7 @@ extension PlanetVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getFilm(withLink: data.films[indexPath.row]) { film in
                             cell.setName("Episode \(film.episode_id). \(film.title)")
                             self.films[indexPath.row] = film
+                            DataService.device.data[self.data.films[indexPath.row]] = film
                         } onError: { message in
                             print(message)
                             cell.setName("-")

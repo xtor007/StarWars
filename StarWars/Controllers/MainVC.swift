@@ -20,13 +20,6 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         peopleTable.delegate = self
         peopleTable.dataSource = self
-//        NetworkService.server.getPeople { people in
-//            self.people = people
-//            self.peopleTable.reloadData()
-//        } onError: { error in
-//            print(error)
-//            //show
-//        }
         NetworkService.server.getCountOfPeople { count in
             self.count = count
             self.people = Array(repeating: nil, count: count)
@@ -34,9 +27,7 @@ class MainVC: UIViewController {
         } onError: { message in
             print(message)
         }
-
     }
-
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -55,6 +46,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 NetworkService.server.getPerson(withIdentifire: indexPath.row+1) { person in
                     cell.setName(person.name)
                     self.people[indexPath.row] = person
+                    DataService.device.data["https://swapi.dev/api/people/\(indexPath.row+1)"] = person
                 } onError: { message in
                     print(message)
                     cell.setName("-")

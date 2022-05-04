@@ -36,8 +36,22 @@ class SpeccyVC: UIViewController {
         getData()
         people = Array(repeating: nil, count: data.people.count)
         films = Array(repeating: nil, count: data.films.count)
+        checkCach()
         informationTable.delegate = self
         informationTable.dataSource = self
+    }
+    
+    private func checkCach() {
+        for i in 0..<films.count {
+            if let film = DataService.device.data[data.films[i]] as? Film {
+                films[i] = film
+            }
+        }
+        for i in 0..<people.count {
+            if let person = DataService.device.data[data.people[i]] as? Person {
+                people[i] = person
+            }
+        }
     }
     
     private func getData() {
@@ -52,11 +66,17 @@ class SpeccyVC: UIViewController {
         lifespanLabel.text = data.average_lifespan
         if let homeworld = data.homeworld {
             setTitleHomeworldButton("Loading...")
-            NetworkService.server.getPlanet(withLink: homeworld) { planet in
+            if let planet = DataService.device.data[homeworld] as? Planet {
                 self.planet = planet
                 self.setTitleHomeworldButton(planet.name)
-            } onError: { message in
-                print(message)
+            } else {
+                NetworkService.server.getPlanet(withLink: homeworld) { planet in
+                    self.planet = planet
+                    DataService.device.data[homeworld] = planet
+                    self.setTitleHomeworldButton(planet.name)
+                } onError: { message in
+                    print(message)
+                }
             }
         } else {
             setTitleHomeworldButton("none")
@@ -113,6 +133,7 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
                     NetworkService.server.getPerson(withLink: data.people[indexPath.row]) { person in
                         cell.setName(person.name)
                         self.people[indexPath.row] = person
+                        DataService.device.data[self.data.people[indexPath.row]] = person
                     } onError: { message in
                         print(message)
                         cell.setName("-")
@@ -125,6 +146,7 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
                     NetworkService.server.getFilm(withLink: data.films[indexPath.row]) { film in
                         cell.setName("Episode \(film.episode_id). \(film.title)")
                         self.films[indexPath.row] = film
+                        DataService.device.data[self.data.films[indexPath.row]] = film
                     } onError: { message in
                         print(message)
                         cell.setName("-")

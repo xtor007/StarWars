@@ -40,8 +40,32 @@ class PersonVC: UIViewController {
         species = Array(repeating: nil, count: data.species.count)
         vehicles = Array(repeating: nil, count: data.vehicles.count)
         starships = Array(repeating: nil, count: data.starships.count)
+        checkCach()
         informationTable.delegate = self
         informationTable.dataSource = self
+    }
+    
+    private func checkCach() {
+        for i in 0..<films.count {
+            if let film = DataService.device.data[data.films[i]] as? Film {
+                films[i] = film
+            }
+        }
+        for i in 0..<species.count {
+            if let speccy = DataService.device.data[data.species[i]] as? Speccy {
+                species[i] = speccy
+            }
+        }
+        for i in 0..<vehicles.count {
+            if let vehicle = DataService.device.data[data.vehicles[i]] as? Vehicle {
+                vehicles[i] = vehicle
+            }
+        }
+        for i in 0..<starships.count {
+            if let starship = DataService.device.data[data.starships[i]] as? Starship {
+                starships[i] = starship
+            }
+        }
     }
     
     private func getData() {
@@ -55,11 +79,17 @@ class PersonVC: UIViewController {
         birthYearLabel.text = data.birth_year
         genderLabel.text = data.gender
         setTitleHomeworldButton("Loading...")
-        NetworkService.server.getPlanet(withLink: data.homeworld) { planet in
+        if let planet = DataService.device.data[data.homeworld] as? Planet {
             self.planet = planet
             self.setTitleHomeworldButton(planet.name)
-        } onError: { message in
-            print(message)
+        } else {
+            NetworkService.server.getPlanet(withLink: data.homeworld) { planet in
+                self.planet = planet
+                DataService.device.data[self.data.homeworld] = planet
+                self.setTitleHomeworldButton(planet.name)
+            } onError: { message in
+                print(message)
+            }
         }
     }
     
@@ -115,6 +145,7 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getFilm(withLink: data.films[indexPath.row]) { film in
                             cell.setName("Episode \(film.episode_id). \(film.title)")
                             self.films[indexPath.row] = film
+                            DataService.device.data[self.data.films[indexPath.row]] = film
                         } onError: { message in
                             print(message)
                             cell.setName("-")
@@ -127,6 +158,7 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getSpeccy(withLink: data.species[indexPath.row]) { speccy in
                             cell.setName(speccy.name)
                             self.species[indexPath.row] = speccy
+                            DataService.device.data[self.data.species[indexPath.row]] = speccy
                         } onError: { message in
                             print(message)
                             cell.setName("-")
@@ -139,6 +171,7 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getVehicle(withLink: data.vehicles[indexPath.row]) { vehicle in
                             cell.setName(vehicle.name)
                             self.vehicles[indexPath.row] = vehicle
+                            DataService.device.data[self.data.vehicles[indexPath.row]] = vehicle
                         } onError: { message in
                             print(message)
                             cell.setName("-")
@@ -151,6 +184,7 @@ extension PersonVC: UITableViewDelegate, UITableViewDataSource {
                         NetworkService.server.getStarship(withLink: data.starships[indexPath.row]) { starship in
                             cell.setName(starship.name)
                             self.starships[indexPath.row] = starship
+                            DataService.device.data[self.data.starships[indexPath.row]] = starship
                         } onError: { message in
                             print(message)
                             cell.setName("-")

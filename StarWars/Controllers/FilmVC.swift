@@ -37,8 +37,37 @@ class FilmVC: UIViewController {
         starships = Array(repeating: nil, count: data.starships.count)
         vehicles = Array(repeating: nil, count: data.vehicles.count)
         species = Array(repeating: nil, count: data.species.count)
+        checkCach()
         informationTable.delegate = self
         informationTable.dataSource = self
+    }
+    
+    private func checkCach() {
+        for i in 0..<characters.count {
+            if let person = DataService.device.data[data.characters[i]] as? Person {
+                characters[i] = person
+            }
+        }
+        for i in 0..<planets.count {
+            if let planet = DataService.device.data[data.planets[i]] as? Planet {
+                planets[i] = planet
+            }
+        }
+        for i in 0..<species.count {
+            if let speccy = DataService.device.data[data.species[i]] as? Speccy {
+                species[i] = speccy
+            }
+        }
+        for i in 0..<vehicles.count {
+            if let vehicle = DataService.device.data[data.vehicles[i]] as? Vehicle {
+                vehicles[i] = vehicle
+            }
+        }
+        for i in 0..<starships.count {
+            if let starship = DataService.device.data[data.starships[i]] as? Starship {
+                starships[i] = starship
+            }
+        }
     }
     
     func getData() {
@@ -95,6 +124,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     NetworkService.server.getPerson(withLink: data.characters[indexPath.row]) { person in
                         cell.setName(person.name)
                         self.characters[indexPath.row] = person
+                        DataService.device.data[self.data.characters[indexPath.row]] = person
                     } onError: { message in
                         print(message)
                         cell.setName("-")
@@ -107,6 +137,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     NetworkService.server.getPlanet(withLink: data.planets[indexPath.row]) { planet in
                         cell.setName(planet.name)
                         self.planets[indexPath.row] = planet
+                        DataService.device.data[self.data.planets[indexPath.row]] = planet
                     } onError: { message in
                         print(message)
                         cell.setName("-")
@@ -119,6 +150,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     NetworkService.server.getStarship(withLink: data.starships[indexPath.row]) { starship in
                         cell.setName(starship.name)
                         self.starships[indexPath.row] = starship
+                        DataService.device.data[self.data.starships[indexPath.row]] = starship
                     } onError: { message in
                         print(message)
                         cell.setName("-")
@@ -131,6 +163,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     NetworkService.server.getVehicle(withLink: data.vehicles[indexPath.row]) { vehicle in
                         cell.setName(vehicle.name)
                         self.vehicles[indexPath.row] = vehicle
+                        DataService.device.data[self.data.vehicles[indexPath.row]] = vehicle
                     } onError: { message in
                         print(message)
                         cell.setName("-")
@@ -143,6 +176,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     NetworkService.server.getSpeccy(withLink: data.species[indexPath.row]) { speccy in
                         cell.setName(speccy.name)
                         self.species[indexPath.row] = speccy
+                        DataService.device.data[self.data.species[indexPath.row]] = speccy
                     } onError: { message in
                         print(message)
                         cell.setName("-")
