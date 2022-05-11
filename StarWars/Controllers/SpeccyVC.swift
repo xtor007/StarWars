@@ -15,6 +15,8 @@ class SpeccyVC: UIViewController {
     var people: [Person?] = []
     var films: [Film?] = []
     
+    var indexPathForIgnore: [IndexPath] = []
+    
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var classificationLabel: UILabel!
@@ -75,7 +77,9 @@ class SpeccyVC: UIViewController {
                     DataService.device.data[homeworld] = planet
                     self.setTitleHomeworldButton(planet.name)
                 } onError: { message in
-                    print(message)
+                    self.showError(message) {
+                        self.setTitleHomeworldButton("-")
+                    }
                 }
             }
         } else {
@@ -125,6 +129,10 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PersonCell {
             cell.setName("Loading...")
+            if indexPathForIgnore.contains(indexPath) {
+                cell.setName("-")
+                return cell
+            }
             switch indexPath.section {
             case 0:
                 if let person = people[indexPath.row] {
@@ -135,8 +143,10 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
                         self.people[indexPath.row] = person
                         DataService.device.data[self.data.people[indexPath.row]] = person
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             case 1:
@@ -148,8 +158,10 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
                         self.films[indexPath.row] = film
                         DataService.device.data[self.data.films[indexPath.row]] = film
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             default: cell.setName("error")
@@ -179,7 +191,7 @@ extension SpeccyVC: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         default:
-            print("error")
+            showError("Something is not good") {}
         }
     }
     

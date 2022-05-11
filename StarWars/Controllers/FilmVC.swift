@@ -17,6 +17,8 @@ class FilmVC: UIViewController {
     var vehicles: [Vehicle?] = []
     var species: [Speccy?] = []
     
+    var indexPathForIgnore: [IndexPath] = []
+    
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var seeCrawlButton: UIButton!
@@ -116,6 +118,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PersonCell {
             cell.setName("Loading...")
+            if indexPathForIgnore.contains(indexPath) {
+                cell.setName("-")
+                return cell
+            }
             switch indexPath.section {
             case 0:
                 if let person = characters[indexPath.row] {
@@ -126,8 +132,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                         self.characters[indexPath.row] = person
                         DataService.device.data[self.data.characters[indexPath.row]] = person
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             case 1:
@@ -139,8 +147,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                         self.planets[indexPath.row] = planet
                         DataService.device.data[self.data.planets[indexPath.row]] = planet
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             case 2:
@@ -152,8 +162,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                         self.starships[indexPath.row] = starship
                         DataService.device.data[self.data.starships[indexPath.row]] = starship
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             case 3:
@@ -165,8 +177,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                         self.vehicles[indexPath.row] = vehicle
                         DataService.device.data[self.data.vehicles[indexPath.row]] = vehicle
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             case 4:
@@ -178,8 +192,10 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                         self.species[indexPath.row] = speccy
                         DataService.device.data[self.data.species[indexPath.row]] = speccy
                     } onError: { message in
-                        print(message)
                         cell.setName("-")
+                        self.showError(message) {
+                            self.indexPathForIgnore.append(indexPath)
+                        }
                     }
                 }
             default:
@@ -233,7 +249,7 @@ extension FilmVC: UITableViewDataSource, UITableViewDelegate {
                     presentDetail(speccyVC)
                 }
             }
-        default: print("error")
+        default: showError("Something is not good") {}
         }
     }
     

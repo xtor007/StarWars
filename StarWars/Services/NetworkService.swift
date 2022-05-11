@@ -73,8 +73,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
-                    print(id)
                     onError(error.localizedDescription)
                 }
             }
@@ -107,7 +105,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }
@@ -140,7 +137,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }
@@ -173,7 +169,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }
@@ -206,7 +201,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }
@@ -239,7 +233,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }
@@ -272,7 +265,6 @@ class NetworkService {
                     }
                 }
                 catch {
-                    print(error)
                     onError(error.localizedDescription)
                 }
             }

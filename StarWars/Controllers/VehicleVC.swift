@@ -14,6 +14,8 @@ class VehicleVC: UIViewController {
     var pilots: [Person?] = []
     var films: [Film?] = []
     
+    var indexPathForIgnore: [IndexPath] = []
+    
     @IBOutlet weak var mainNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
@@ -96,6 +98,10 @@ extension VehicleVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PersonCell {
             cell.setName("Loading...")
+            if indexPathForIgnore.contains(indexPath) {
+                cell.setName("-")
+                return cell
+            }
             switch indexPath.section {
                 case 0:
                     if let person = pilots[indexPath.row] {
@@ -106,8 +112,10 @@ extension VehicleVC: UITableViewDelegate, UITableViewDataSource {
                             self.pilots[indexPath.row] = person
                             DataService.device.data[self.data.pilots[indexPath.row]] = person
                         } onError: { message in
-                            print(message)
                             cell.setName("-")
+                            self.showError(message) {
+                                self.indexPathForIgnore.append(indexPath)
+                            }
                         }
                     }
                 case 1:
@@ -119,8 +127,10 @@ extension VehicleVC: UITableViewDelegate, UITableViewDataSource {
                             self.films[indexPath.row] = film
                             DataService.device.data[self.data.films[indexPath.row]] = film
                         } onError: { message in
-                            print(message)
                             cell.setName("-")
+                            self.showError(message) {
+                                self.indexPathForIgnore.append(indexPath)
+                            }
                         }
                     }
                 default: cell.setName("error")
@@ -149,7 +159,7 @@ extension VehicleVC: UITableViewDelegate, UITableViewDataSource {
                         presentDetail(filmVC)
                     }
                 }
-            default: print("error")
+            default: showError("Something is not good") {}
         }
     }
     

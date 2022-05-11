@@ -14,6 +14,8 @@ class MainVC: UIViewController {
     var people: [Person?] = []
     var count = 0
     
+    var indexPathForIgnore: [IndexPath] = []
+    
     @IBOutlet weak var peopleTable: UITableView!
     
     override func viewDidLoad() {
@@ -25,7 +27,11 @@ class MainVC: UIViewController {
             self.people = Array(repeating: nil, count: count)
             self.peopleTable.reloadData()
         } onError: { message in
-            print(message)
+            self.showError(message) {
+                self.showError("You couldn't ignore this") {
+                    self.dismiss(animated: false)
+                }
+            }
         }
     }
 }
@@ -40,6 +46,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PersonCell {
             cell.setName("Loading...")
+            if indexPathForIgnore.contains(indexPath) {
+                cell.setName("-")
+                return cell
+            }
             if let thisPerson = people[indexPath.row] {
                 cell.setName(thisPerson.name)
             } else {
@@ -48,8 +58,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                     self.people[indexPath.row] = person
                     DataService.device.data["https://swapi.dev/api/people/\(indexPath.row+1)"] = person
                 } onError: { message in
-                    print(message)
                     cell.setName("-")
+                    self.showError(message) {
+                        self.indexPathForIgnore.append(indexPath)
+                    }
                 }
             }
             return cell
